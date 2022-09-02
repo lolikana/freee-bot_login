@@ -86,13 +86,11 @@ async function f(email, password) {
   const test = async () => {
     await promiseSaveBtn;
     await promiseSaveBtn.click();
-    console.log('test 1: ', new Date());
   };
 
   let i = 0;
   while (i < 23) {
     if (await promiseSaveBtn.isEnabled()) {
-      console.log(i);
       test();
       await promiseSaveBtn.isEnabled();
       i++;
@@ -102,4 +100,5 @@ async function f(email, password) {
   // 9 - close browser
   await driver.close();
 }
+
 f(email, password);
