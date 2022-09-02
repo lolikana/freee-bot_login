@@ -2,7 +2,7 @@
 
 In progress....
 
-- [ ] Nee to find a solution for step 7 
+- [ ] Need to find a solution for step 7 
 
 1. <code>npm install</code>
 2. Write your freee email and password in <i>credentiales.json</i> 
