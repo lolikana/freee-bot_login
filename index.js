@@ -35,30 +35,16 @@ async function f(email, password) {
   await promiseAttendanceBtn.click();
 
   //! if want to enable next month !//
-  // let test = driver.findElement(swd.By.css('button[data-test="年月ナビ_2022-10"]'));
-  // await test.click();
-
-  // // 6 - select first day of the month
-  // const currYear = new Date().getFullYear();
-  // const currMonth = new Date().getMonth();
-  // let inputMonth;
-  // if (currMonth !== 11) {
-  //   inputMonth = `0${+currMonth + 2}`;
-  // } else {
-  //   inputMonth = '01';
-  // }
-
-  // let promiseFirstDayBtn = driver.findElement(
-  //   swd.By.css(`[data-date="${currYear}-${inputMonth}-01"]`)
+  // let attendanceMonth = driver.findElement(
+  //   swd.By.css('button[data-test="年月ナビ_2022-2"]')
   // );
-
-  // await promiseFirstDayBtn.click();
-
+  // await attendanceMonth.click();
   //! if want to enable next month !//
 
-  // 6 - select first day of the month
-  const currYear = new Date().getFullYear();
-  const currMonth = new Date().getMonth();
+  // 6 - select first day of work
+  const date = new Date();
+  const currYear = date.getFullYear();
+  const currMonth = date.getMonth();
   let inputMonth;
   if (currMonth !== 11) {
     inputMonth = `0${+currMonth + 1}`;
@@ -66,11 +52,24 @@ async function f(email, password) {
     inputMonth = '01';
   }
 
-  let promiseFirstDayBtn = driver.findElement(
-    swd.By.css(`[data-date="${currYear}-${inputMonth}-01"]`)
-  );
+  const workDayBoxClass = async day => {
+    return await driver
+      .findElement(swd.By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`))
+      .getAttribute('class');
+  };
 
-  await promiseFirstDayBtn.click();
+  let i = 1;
+  for (i; i < 5; i++) {
+    if (
+      (await workDayBoxClass(i)) !== 'day prescribed-holiday' &&
+      (await workDayBoxClass(i)) !== 'day legal-holiday'
+    )
+      break;
+  }
+
+  await driver
+    .findElement(swd.By.css(`[data-date="${currYear}-${inputMonth}-0${i}"]`))
+    .click();
 
   // 7 - check if continue checkbox is unchecked
   let promiseContinueCheckbox = driver.findElement(swd.By.css('.sw-checkbox-input'));
@@ -88,17 +87,16 @@ async function f(email, password) {
     await promiseSaveBtn.click();
   };
 
-  let i = 0;
-  while (i < 23) {
+  let j = 0;
+  while (j < 23) {
     if (await promiseSaveBtn.isEnabled()) {
       test();
       await promiseSaveBtn.isEnabled();
-      i++;
+      j++;
     }
   }
 
   // 9 - close browser
   await driver.close();
 }
-
 f(email, password);
