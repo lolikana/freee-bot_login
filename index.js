@@ -34,7 +34,7 @@ async function f(email, password) {
   let promiseAttendanceBtn = driver.findElement(swd.By.css("a[data-guide='勤怠'"));
   await promiseAttendanceBtn.click();
 
-  // //! erase in september !//
+  //! if want to enable next month !//
   // let test = driver.findElement(swd.By.css('button[data-test="年月ナビ_2022-10"]'));
   // await test.click();
 
@@ -54,7 +54,7 @@ async function f(email, password) {
 
   // await promiseFirstDayBtn.click();
 
-  // //! erase in september !//
+  //! if want to enable next month !//
 
   // 6 - select first day of the month
   const currYear = new Date().getFullYear();
@@ -72,23 +72,34 @@ async function f(email, password) {
 
   await promiseFirstDayBtn.click();
 
-  //TODO から
-  // 7 - click "next" button until end of the month
+  // 7 - check if continue checkbox is unchecked
+  let promiseContinueCheckbox = driver.findElement(swd.By.css('.sw-checkbox-input'));
+  if (!promiseContinueCheckbox.checked) {
+    await promiseContinueCheckbox.click();
+  }
+
+  // 8 - click "next" button until end of the month
   let promiseSaveBtn = driver.findElement(
     swd.By.css('.work-record-edit-modal__footer-control.sw-button-primary')
   );
 
-  async function click() {
-    promiseSaveBtn;
+  const test = async () => {
+    await promiseSaveBtn;
     await promiseSaveBtn.click();
+    console.log('test 1: ', new Date());
+  };
+
+  let i = 0;
+  while (i < 23) {
+    if (await promiseSaveBtn.isEnabled()) {
+      console.log(i);
+      test();
+      await promiseSaveBtn.isEnabled();
+      i++;
+    }
   }
 
-  for (let i = 1; i < 5; i++) {
-    await driver.wait(until.promiseSaveBtn.isEnabled());
-    click();
-  }
-//TODO まで
-
-  // await driver.close()
+  // 9 - close browser
+  await driver.close();
 }
 f(email, password);
