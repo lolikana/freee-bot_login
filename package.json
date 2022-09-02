@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "chromedriver": "^104.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "pkg": "^5.8.0",
+    "puppeteer": "^16.2.0",
+    "selenium-webdriver": "^4.4.0"
+  },
+  "name": "bot_login",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
