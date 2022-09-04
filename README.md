@@ -1,8 +1,8 @@
 # freee-bot_login
 
-In progress....
+Done...
 
-- [ ] Need to find a solution for step 7 
+Coul add some functionality later.
 
 1. <code>npm install</code>
 2. Write your freee email and password in <i>credentiales.json</i> 
