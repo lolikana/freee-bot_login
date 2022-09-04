@@ -17,29 +17,29 @@ async function f(email, password) {
     implicit: 10000 // 10 seconds
   });
   // 2 - username input
-  let promiseUsernameBox = await driver.findElement(swd.By.css('#user_email'));
-  await promiseUsernameBox.sendKeys(email);
+  let usernameInput = await driver.findElement(swd.By.css('#user_email'));
+  await usernameInput.sendKeys(email);
 
   // 3 - password input
-  let promisePasswordBox = await driver.findElement(swd.By.css("[type='password']"));
-  await promisePasswordBox.sendKeys(password);
+  let passwordInput = await driver.findElement(swd.By.css("[type='password']"));
+  await passwordInput.sendKeys(password);
 
   // 4 - signin button
-  let promiseSignInBtn = driver.findElement(
+  let signInBtn = driver.findElement(
     swd.By.css('.btn.btn-primary.login-page-button.login-button.transition')
   );
-  await promiseSignInBtn.click();
+  await signInBtn.click();
 
   // 5 - attendance tab
-  let promiseAttendanceBtn = driver.findElement(swd.By.css("a[data-guide='勤怠'"));
-  await promiseAttendanceBtn.click();
+  let attendanceBtn = driver.findElement(swd.By.css("a[data-guide='勤怠'"));
+  await attendanceBtn.click();
 
-  //! if want to enable next month !//
-  // let attendanceMonth = driver.findElement(
+  //! Choose specific month !//
+  // let selectAttendanceMonth = driver.findElement(
   //   swd.By.css('button[data-test="年月ナビ_2022-2"]')
   // );
-  // await attendanceMonth.click();
-  //! if want to enable next month !//
+  // await selectAttendanceMonth.click();
+  //! Choose specific month !//
 
   // 6 - select first day of work
   const date = new Date();
@@ -68,26 +68,26 @@ async function f(email, password) {
     .click();
 
   // 7 - check if continue checkbox is unchecked
-  let promiseContinueCheckbox = driver.findElement(swd.By.css('.sw-checkbox-input'));
-  if (!promiseContinueCheckbox.checked) {
-    await promiseContinueCheckbox.click();
+  let continueCheckbox = driver.findElement(swd.By.css('.sw-checkbox-input'));
+  if (!continueCheckbox.checked) {
+    await continueCheckbox.click();
   }
 
   // 8 - click "next" button until end of the month
-  let promiseSaveBtn = driver.findElement(
+  let saveBtn = driver.findElement(
     swd.By.css('.work-record-edit-modal__footer-control.sw-button-primary')
   );
 
   const test = async () => {
-    await promiseSaveBtn;
-    await promiseSaveBtn.click();
+    await saveBtn;
+    await saveBtn.click();
   };
 
   let j = 0;
   while (j < 23) {
-    if (await promiseSaveBtn.isEnabled()) {
+    if (await saveBtn.isEnabled()) {
       test();
-      await promiseSaveBtn.isEnabled();
+      await saveBtn.isEnabled();
       j++;
     }
   }
