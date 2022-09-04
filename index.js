@@ -60,13 +60,7 @@ async function f(email, password) {
 
   let i = 1;
   for (i; i < 10; i++) {
-    if (
-      (await workDayBoxClass(i)) !== 'day prescribed-holiday' &&
-      (await workDayBoxClass(i)) !== 'day legal-holiday' &&
-      (await workDayBoxClass(i)) !== 'day absent' &&
-      (await workDayBoxClass(i)) !== 'day paid-holiday'
-    )
-      break;
+    if ((await workDayBoxClass(i)) === 'day work') break;
   }
 
   await driver
