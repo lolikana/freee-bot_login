@@ -35,10 +35,10 @@ async function f(email, password) {
   await attendanceBtn.click();
 
   //! Choose specific month !//
-  // let selectAttendanceMonth = driver.findElement(
-  //   swd.By.css('button[data-test="年月ナビ_2022-2"]')
-  // );
-  // await selectAttendanceMonth.click();
+  let selectAttendanceMonth = driver.findElement(
+    swd.By.css('button[data-test="年月ナビ_2022-11"]')
+  );
+  await selectAttendanceMonth.click();
   //! Choose specific month !//
 
   // 6 - select first day of work
@@ -46,12 +46,13 @@ async function f(email, password) {
   const currYear = date.getFullYear();
   const currMonth = date.getMonth();
   let inputMonth;
-  if (currMonth !== 11) {
+  if (currMonth === 0 || currMonth <= 8) {
     inputMonth = `0${+currMonth + 1}`;
-  } else {
-    inputMonth = '01';
+  } else if (currMonth) {
+    inputMonth = `${+currMonth + 1}`;
   }
 
+  console.log(inputMonth);
   const workDayBoxClass = async day => {
     return await driver
       .findElement(swd.By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`))
@@ -85,7 +86,7 @@ async function f(email, password) {
   };
 
   let j = 0;
-  while (j < 23) {
+  while (j < 3) {
     if (await saveBtn.isEnabled()) {
       test();
       await saveBtn.isEnabled();
