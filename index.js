@@ -9,6 +9,8 @@ let driver = browser.forBrowser('chrome').build();
 // Get the credentials from the JSON file
 let { email, password } = require('./credentials.json');
 
+f(email, password);
+
 // Step 1 - Opening the geeksforgeeks sign in page
 async function f(email, password) {
   await driver.get('https://accounts.secure.freee.co.jp/login/hr');
@@ -35,10 +37,11 @@ async function f(email, password) {
   await attendanceBtn.click();
 
   //! Choose specific month !//
-  let selectAttendanceMonth = driver.findElement(
-    swd.By.css('button[data-test="年月ナビ_2022-11"]')
-  );
-  await selectAttendanceMonth.click();
+  // let selectAttendanceMonth = driver.findElement(
+  //   swd.By.css('button[data-test="年月ナビ_2022-11"]')
+  // );
+  // await selectAttendanceMonth.click();
+  // let inputMonth = '10';
   //! Choose specific month !//
 
   // 6 - select first day of work
@@ -52,7 +55,6 @@ async function f(email, password) {
     inputMonth = `${+currMonth + 1}`;
   }
 
-  console.log(inputMonth);
   const workDayBoxClass = async day => {
     return await driver
       .findElement(swd.By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`))
@@ -86,7 +88,7 @@ async function f(email, password) {
   };
 
   let j = 0;
-  while (j < 3) {
+  while (j < 5) {
     if (await saveBtn.isEnabled()) {
       test();
       await saveBtn.isEnabled();
@@ -97,4 +99,3 @@ async function f(email, password) {
   // 9 - close browser
   await driver.close();
 }
-f(email, password);
