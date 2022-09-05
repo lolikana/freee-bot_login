@@ -9,11 +9,24 @@
     "selenium-webdriver": "^4.4.0"
   },
   "name": "bot_login",
+  "bin": "index.js",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index"
+  },
+  "pkg": {
+    "scripts": [
+      "./*.js"
+    ],
+    "assets": [
+      "./*.json",
+      "node_modules/*"
+    ],
+    "targets": [
+      "node16-macos-x64"
+    ]
   },
   "author": "",
   "license": "ISC",

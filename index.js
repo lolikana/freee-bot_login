@@ -59,8 +59,9 @@ async function f(email, password) {
   };
 
   let i = 1;
-  for (i; i < 10; i++) {
-    if ((await workDayBoxClass(i)) === 'day') break;
+  for (i; i < 22; i++) {
+    if ((await workDayBoxClass(i)) === 'day' || (await workDayBoxClass(i)) === 'day work')
+      break;
   }
 
   await driver
