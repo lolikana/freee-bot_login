@@ -1,8 +1,8 @@
 # freee-bot_login
 
-Done...
+This bot will connect to your personnal Freee account, select attendance tab and start to input every day attendance automatically for the current month.
 
-Coul add some functionality later.
+Done...
 
 1. <code>npm install</code>
 2. Write your freee email and password in <i>credentiales.json</i> 
@@ -16,3 +16,4 @@ Coul add some functionality later.
 ```
 
 3. <code>node index.js</code>
+
