@@ -5,6 +5,7 @@
     "express": "^4.18.1",
     "nodemon": "^2.0.19",
     "pkg": "^5.8.0",
+    "prompt": "^1.3.0",
     "selenium-webdriver": "^4.4.0"
   },
   "name": "bot_login",
@@ -22,9 +23,6 @@
     "assets": [
       "./*.json",
       "node_modules/*"
-    ],
-    "targets": [
-      "node16-macos-x64"
     ]
   },
   "author": "",
