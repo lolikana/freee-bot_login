@@ -32,11 +32,13 @@ prompt.get(properties, (err, result) => {
         implicit: 10000 // 10 seconds
       });
       // 2 - username input
-      let usernameInput = await driver.findElement(swd.By.css('#user_email'));
+      let usernameInput = await driver.findElement(swd.By.css('#login_id'));
       await usernameInput.sendKeys(email);
 
       // 3 - password input
-      let passwordInput = await driver.findElement(swd.By.css("[type='password']"));
+      let passwordInput = await driver.findElement(
+        swd.By.css("[type='password']")
+      );
       await passwordInput.sendKeys(password);
 
       // 4 - signin button
@@ -46,7 +48,9 @@ prompt.get(properties, (err, result) => {
       await signInBtn.click();
 
       // 5 - attendance tab
-      let attendanceBtn = driver.findElement(swd.By.css("a[data-guide='勤怠'"));
+      let attendanceBtn = driver.findElement(
+        swd.By.css("a[data-test='グロナビ_勤怠'")
+      );
       await attendanceBtn.click();
 
       //! Choose specific month !//
@@ -70,7 +74,9 @@ prompt.get(properties, (err, result) => {
 
       const workDayBoxClass = async day => {
         return await driver
-          .findElement(swd.By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`))
+          .findElement(
+            swd.By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`)
+          )
           .getAttribute('class');
       };
 
@@ -84,11 +90,15 @@ prompt.get(properties, (err, result) => {
       }
 
       await driver
-        .findElement(swd.By.css(`[data-date="${currYear}-${inputMonth}-0${i}"]`))
+        .findElement(
+          swd.By.css(`[data-date="${currYear}-${inputMonth}-0${i}"]`)
+        )
         .click();
 
       // 7 - check if continue checkbox is unchecked
-      let continueCheckbox = driver.findElement(swd.By.css('.sw-checkbox-input'));
+      let continueCheckbox = driver.findElement(
+        swd.By.css('.sw-checkbox-input')
+      );
       if (!continueCheckbox.checked) {
         await continueCheckbox.click();
       }
@@ -104,7 +114,7 @@ prompt.get(properties, (err, result) => {
       };
 
       let j = 0;
-      while (j < 5) {
+      while (j < 23) {
         if (await saveBtn.isEnabled()) {
           test();
           await saveBtn.isEnabled();
