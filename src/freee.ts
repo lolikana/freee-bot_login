@@ -9,9 +9,15 @@ async function Freee(email: string, password: string) {
   let driver = browser.forBrowser('chrome').build();
   await driver.get('https://accounts.secure.freee.co.jp/login/hr');
   // Timeout to wait if connection is slow
-  await driver.manage().setTimeouts({
-    implicit: 10000
-  });
+  await driver
+    .manage()
+    .setTimeouts({
+      implicit: 10000
+    })
+    .catch(err => {
+      console.log(err);
+      driver.close();
+    });
   // 2 - username input
   let usernameInput = await driver.findElement(By.css('#login_id'));
   await usernameInput.sendKeys(email);
