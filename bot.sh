@@ -1,5 +1,6 @@
 #! /bin/sh
 
 cd "/Users/NodeJS/bot_login"
-npm install chromedriver@latest selenium-webdriver@latest 
+npm install 
+npm run update
 node dist/index.js
