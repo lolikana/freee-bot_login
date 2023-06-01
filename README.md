@@ -7,7 +7,7 @@ This bot will connect to your personnal Freee account, select attendance tab and
 
 1. Clone this repository to your local machine:
 
-`git clone https://github.com/lolikana/odin-vite_ts-todo.git`
+`https://github.com/lolikana/freee-bot_login`
 
 2. Install dependencies:
 
@@ -39,7 +39,7 @@ This bot will connect to your personnal Freee account, select attendance tab and
 
 1. Clone this repository to your local machine:
 
-`git clone https://github.com/lolikana/odin-vite_ts-todo.git`
+`https://github.com/lolikana/freee-bot_login`
 
 2. Change directory from the bot.sh
 
