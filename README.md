@@ -2,7 +2,9 @@
 
 The Freee-Bot Login is a script that automates the process of logging attendance in your personal Freee account. Freee is a cloud-based accounting and HR platform that provides businesses with various tools for managing attendance, payroll, and more. This bot specifically targets the attendance tab of the Freee platform and automatically inputs attendance data for each day of the current month.
 
-## Method 1
+## Installation and Usage
+
+### Method 1: Manual Setup
 
 1. Clone this repository to your local machine:
 
@@ -34,7 +36,7 @@ The Freee-Bot Login is a script that automates the process of logging attendance
 `npm run run start`
 
 
-## Method 2: Using the bot.sh script
+### Method 2: Using the bot.sh script
 
 1. Clone this repository to your local machine:
 
