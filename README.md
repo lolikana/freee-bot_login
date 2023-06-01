@@ -46,7 +46,16 @@ The Freee-Bot Login is a script that automates the process of logging attendance
 
 `cd "/Path/to/you/clone/folder"`
 
-3. Make sure to open the Terminal and have the appropriate permissions.
+3. Write your freee email <i>src/credentiales.json</i> 
+
+```
+{
+  "email": "mail",
+}
+
+```
+
+4. Make sure to open the Terminal and have the appropriate permissions.
 
 If necessary, you can grant execution permission by running the following command:
 
