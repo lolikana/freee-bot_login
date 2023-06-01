@@ -19,7 +19,9 @@ prompt.get(properties, (_err: unknown, result: { password: string }) => {
   let email = data.email;
 
   if (result.password) {
-    Freee(email, result.password);
-    Performance(email, result.password.toLowerCase());
+    Freee(email, result.password).catch(err => console.log('free: ' + err));
+    Performance(email, result.password).catch(err =>
+      console.log('perfomance :' + err)
+    );
   }
 });
