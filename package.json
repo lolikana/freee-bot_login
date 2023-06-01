@@ -17,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "update": "npm i chromedriver@latest selenium-webdriver@latest",
     "start": "node dist/index",
-    "build": "npx tsc -w"
+    "build": "npx tsc"
   },
   "pkg": {
     "scripts": [
