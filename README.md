@@ -1,7 +1,6 @@
 # freee-bot_login
 
-This bot will connect to your personnal Freee account, select attendance tab and start to input every day attendance automatically for the current month.
-
+The Freee-Bot Login is a script that automates the process of logging attendance in your personal Freee account. Freee is a cloud-based accounting and HR platform that provides businesses with various tools for managing attendance, payroll, and more. This bot specifically targets the attendance tab of the Freee platform and automatically inputs attendance data for each day of the current month.
 
 ## Method 1
 
@@ -35,7 +34,7 @@ This bot will connect to your personnal Freee account, select attendance tab and
 `npm run run start`
 
 
-## Method 2: ./bot.sh
+## Method 2: Using the bot.sh script
 
 1. Clone this repository to your local machine:
 
@@ -45,6 +44,8 @@ This bot will connect to your personnal Freee account, select attendance tab and
 
 `cd "/Path/to/you/clone/folder"`
 
-3. Be sure to open with Terminal and have the right permission
+3. Make sure to open the Terminal and have the appropriate permissions.
 
-You can enter the following command to `chmod -x Path/to/your/bot.sh` to enable execution permission.
+If necessary, you can grant execution permission by running the following command:
+
+ `chmod -x Path/to/your/bot.sh` 
