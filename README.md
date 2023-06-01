@@ -2,18 +2,31 @@
 
 This bot will connect to your personnal Freee account, select attendance tab and start to input every day attendance automatically for the current month.
 
-Done...
+1. Clone this repository to your local machine:
 
-1. <code>npm install</code>
-2. Write your freee email and password in <i>credentiales.json</i> 
+`git clone https://github.com/lolikana/odin-vite_ts-todo.git`
+
+2. Install dependencies:
+
+`npm install`
+
+3. Update Chromedriver and Selenium-webdriver:
+
+`npm run update`
+
+4. Write your freee email <i>src/credentiales.json</i> 
 
 ```
 {
   "email": "mail",
-  "password": "password"
 }
 
 ```
 
-3. <code>node index.js</code>
+5. Creates a build directory  
 
+`npm run build`
+
+8. Run the script
+
+`npm run run start`
