@@ -76,7 +76,7 @@ async function Freee(email: string, password: string) {
 
   // 7 - check if continue checkbox is unchecked
   let continueCheckbox: any = await driver.findElement(
-    By.css('.sw-checkbox-input')
+    By.css('.vb-checkbox__control')
   );
 
   if (!continueCheckbox.checked) {
@@ -85,7 +85,7 @@ async function Freee(email: string, password: string) {
 
   // 8 - click "next" button until end of the month
   let saveBtn = driver.findElement(
-    By.css('.work-record-edit-modal__footer-control.sw-button-primary')
+    By.css('.vb-button.vb-button--appearancePrimary')
   );
 
   const test = async () => {
