@@ -63,10 +63,7 @@ async function Freee(email: string, password: string) {
 
   let i = 1;
   for (i; i < 22; i++) {
-    if (
-      (await workDayBoxClass(i)) === 'day' ||
-      (await workDayBoxClass(i)) === 'day work'
-    )
+    if ((await workDayBoxClass(i)) === 'day' || (await workDayBoxClass(i)) === 'day work')
       break;
   }
 
@@ -75,30 +72,41 @@ async function Freee(email: string, password: string) {
     .click();
 
   // 7 - check if continue checkbox is unchecked
-  let continueCheckbox: any = await driver.findElement(
-    By.css('.vb-checkbox__control')
-  );
+  let continueCheckbox: any = await driver
+    .findElement(By.css('.vb-checkbox__control'))
+    .catch(err => {
+      console.log('Error 7: ', err.message);
+    });
 
   if (!continueCheckbox.checked) {
     await continueCheckbox.click();
   }
 
   // 8 - click "next" button until end of the month
-  let saveBtn = driver.findElement(
-    By.css('.vb-button.vb-button--appearancePrimary')
-  );
+  let saveBtn = await driver
+    .findElement(
+      By.css(
+        '.ReactModal__Content.ReactModal__Content--after-open .vb-button.vb-button--appearancePrimary'
+      )
+    )
+    .catch(err => {
+      console.log('Error 8: ', err.message);
+      return;
+    });
 
-  const test = async () => {
-    await saveBtn;
+  const clickSaveBtn = async () => {
+    if (!saveBtn) return;
     await saveBtn.click();
   };
 
-  let j = 0;
-  while (j < 23) {
-    if (await saveBtn.isEnabled()) {
-      test();
-      await saveBtn.isEnabled();
-      j++;
+  if (saveBtn) {
+    let j = 0;
+    while (j < 23) {
+      if (await saveBtn.isEnabled()) {
+        clickSaveBtn();
+        await saveBtn.isEnabled();
+        j++;
+      }
     }
   }
 
