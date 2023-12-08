@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "/Users/NodeJS/bot_login"
+cd "/Users/Nodejs/freee-bot_login"
 npm install 
 npm run update
 npm run build
