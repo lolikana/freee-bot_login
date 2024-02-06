@@ -28,10 +28,12 @@ The Freee-Bot Login is a script that automates the process of logging attendance
 
 ```
 
-4.(Optional) Create <i>.env</i> file and add your password:
+4.(Optional) Add your password to <i>src/credentiales.json</i> too:
 
 ```
-PASSWORD="YOUR_PASSWORD"
+{
+  "password": "password",
+}
 ```
 
 5. Build the project:  
