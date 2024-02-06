@@ -1,25 +1,25 @@
 // Include the chrome driver
-import 'chromedriver';
-import { Builder, By } from 'selenium-webdriver';
+import "chromedriver";
+import { Builder, By } from "selenium-webdriver";
 
 let browser = new Builder();
 
 // Step 1 - Opening the geeksforgeeks sign in page
 async function Freee(email: string, password: string) {
-  let driver = browser.forBrowser('chrome').build();
-  await driver.get('https://accounts.secure.freee.co.jp/login/hr');
+  let driver = browser.forBrowser("chrome").build();
+  await driver.get("https://accounts.secure.freee.co.jp/login/hr");
   // Timeout to wait if connection is slow
   await driver
     .manage()
     .setTimeouts({
-      implicit: 10000
+      implicit: 10000,
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       driver.close();
     });
   // 2 - username input
-  let usernameInput = await driver.findElement(By.css('#login_id'));
+  let usernameInput = await driver.findElement(By.css("#login_id"));
   await usernameInput.sendKeys(email);
 
   // 3 - password input
@@ -28,7 +28,7 @@ async function Freee(email: string, password: string) {
 
   // 4 - signin button
   let signInBtn = driver.findElement(
-    By.css('.btn.btn-primary.login-page-button.login-button.transition')
+    By.css(".btn.btn-primary.login-page-button.login-button.transition")
   );
   await signInBtn.click();
 
@@ -48,7 +48,7 @@ async function Freee(email: string, password: string) {
   const date = new Date();
   const currYear = date.getFullYear();
   const currMonth = date.getMonth();
-  let inputMonth: string = '';
+  let inputMonth: string = "";
   if (currMonth === 0 || currMonth <= 8) {
     inputMonth = `0${+currMonth + 1}`;
   } else if (currMonth) {
@@ -58,26 +58,35 @@ async function Freee(email: string, password: string) {
   const workDayBoxClass = async (day: number) => {
     return await driver
       .findElement(By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`))
-      .getAttribute('class');
+      .getAttribute("class")
+      .catch((err) => {
+        return `workDayBoxClass: ${err}`;
+      });
   };
 
   let i = 1;
   for (i; i < 22; i++) {
     if (
-      (await workDayBoxClass(i)) === 'day' ||
-      (await workDayBoxClass(i)) === 'day work'
+      (await workDayBoxClass(i)) === "day" ||
+      (await workDayBoxClass(i)) === "day work"
     )
       break;
   }
 
   await driver
     .findElement(By.css(`[data-date="${currYear}-${inputMonth}-0${i}"]`))
-    .click();
+    .then((el) => el.click())
+    .catch((err) => {
+      return `click data-date: ${err}`;
+    });
 
   // 7 - check if continue checkbox is unchecked
-  let continueCheckbox: any = await driver.findElement(
-    By.css('.vb-checkbox__control')
-  );
+  let continueCheckbox: any = await driver
+    .findElement(By.css(".vb-checkbox__control"))
+    .catch(async (err) => {
+      await driver.close();
+      return `Find continueCheckbox: ${err}`;
+    });
 
   if (!continueCheckbox.checked) {
     await continueCheckbox.click();
@@ -85,10 +94,10 @@ async function Freee(email: string, password: string) {
 
   // 8 - click "next" button until end of the month
   let saveBtn = driver.findElement(
-    By.css('.vb-button.vb-button--appearancePrimary')
+    By.css(".vb-button.vb-button--appearancePrimary.vb-button--hasMinWidth")
   );
 
-  const test = async () => {
+  const clickSaveBtn = async () => {
     await saveBtn;
     await saveBtn.click();
   };
@@ -96,7 +105,7 @@ async function Freee(email: string, password: string) {
   let j = 0;
   while (j < 23) {
     if (await saveBtn.isEnabled()) {
-      test();
+      clickSaveBtn();
       await saveBtn.isEnabled();
       j++;
     }
