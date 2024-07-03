@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "chromedriver": "^119.0.1",
+    "chromedriver": "^126.0.4",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "pkg": "^5.8.0",
     "prompt": "^1.3.0",
-    "selenium-webdriver": "^4.16.0",
-    "typescript": "^4.8.4"
+    "selenium-webdriver": "^4.22.0",
+    "typescript": "^5.5.3"
   },
   "name": "bot_login",
   "bin": "index.js",

@@ -2,7 +2,7 @@
 import 'chromedriver';
 import Freee from './freee.js';
 import prompt from 'prompt';
-import data from './credentials.json' assert { type: 'json' };
+import data from './credentials.json' with { type: 'json' };
 import 'dotenv/config';
 
 const properties = [

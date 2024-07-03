@@ -78,7 +78,8 @@ async function Freee(email: string, password: string) {
       console.log('Error 7: ', err.message);
     });
 
-  if (!continueCheckbox.checked) {
+  const isChecked = await continueCheckbox.isSelected();
+  if (!isChecked) {
     await continueCheckbox.click();
   }
 
