@@ -19,7 +19,7 @@ async function Freee(email: string, password: string) {
       driver.close();
     });
   // 2 - username input
-  let usernameInput = await driver.findElement(By.css('#login_id'));
+  let usernameInput = await driver.findElement(By.css('#loginIdField'));
   await usernameInput.sendKeys(email);
 
   // 3 - password input
@@ -27,9 +27,7 @@ async function Freee(email: string, password: string) {
   await passwordInput.sendKeys(password);
 
   // 4 - signin button
-  let signInBtn = driver.findElement(
-    By.css('.btn.btn-primary.login-page-button.login-button.transition')
-  );
+  let signInBtn = driver.findElement(By.css('[type="submit"]'));
   await signInBtn.click();
 
   // 5 - attendance tab
@@ -37,11 +35,10 @@ async function Freee(email: string, password: string) {
   await attendanceBtn.click();
 
   //! Choose specific month !//
-  // let selectAttendanceMonth = driver.findElement(
-  //   By.css('button[data-test="年月ナビ_2022-11"]')
-  // );
+  // let selectAttendanceMonth =  driver.findElement(By.css("button[data-test='年月ナビ_2024-10']"));
   // await selectAttendanceMonth.click();
   // let inputMonth = '10';
+  //! Should Comment 6
   //! Choose specific month !//
 
   // 6 - select first day of work
@@ -57,7 +54,7 @@ async function Freee(email: string, password: string) {
 
   const workDayBoxClass = async (day: number) => {
     return await driver
-      .findElement(By.css(`[data-date="${currYear}-${inputMonth}-0${day}"]`))
+      .findElement(By.css(`td[data-date="${currYear}-${inputMonth}-0${day}"]`))
       .getAttribute('class');
   };
 
@@ -68,7 +65,7 @@ async function Freee(email: string, password: string) {
   }
 
   await driver
-    .findElement(By.css(`[data-date="${currYear}-${inputMonth}-0${i}"]`))
+    .findElement(By.css(`td[data-date="${currYear}-${inputMonth}-0${i}"]`))
     .click();
 
   // 7 - check if continue checkbox is unchecked
