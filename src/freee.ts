@@ -15,7 +15,7 @@ async function Freee(email: string, password: string) {
       implicit: 10000
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error timeout: ', err);
       driver.close();
     });
   // 2 - username input
@@ -64,9 +64,15 @@ async function Freee(email: string, password: string) {
       break;
   }
 
-  await driver
+  const workDayBox = await driver
     .findElement(By.css(`td[data-date="${currYear}-${inputMonth}-0${i}"]`))
-    .click();
+    // .click()
+    .catch(err => {
+      console.log('Error 6: Work Day Box ', err.message);
+      driver.close();
+    });
+
+  await driver.executeScript('arguments[0].click();', workDayBox);
 
   // 7 - check if continue checkbox is unchecked
   let continueCheckbox: any = await driver
