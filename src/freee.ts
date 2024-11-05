@@ -31,7 +31,7 @@ async function Freee(email: string, password: string) {
   await signInBtn.click();
 
   // 5 - attendance tab
-  let attendanceBtn = driver.findElement(By.css("a[data-test='グロナビ_勤怠'"));
+  let attendanceBtn = driver.findElement(By.css("a[data-testid='グロナビ_勤怠'"));
   await attendanceBtn.click();
 
   //! Choose specific month !//
