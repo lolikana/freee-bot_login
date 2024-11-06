@@ -29,13 +29,21 @@ The Freee-Bot Login is a script that automates the process of logging attendance
 
 ```
 
-5. Creates a build directory  
+5.	Create an .env file in the root directory and add your password:
+
+```
+PASSWORD=yourpassword
+```
+
+OR if you prefer not to store your password in an .env file, you will be prompted to enter it manually in the terminal during runtime.
+
+7. Creates a build directory  
 
 `npm run build`
 
 8. Run the script
 
-`npm run run start`
+`npm run start`
 
 
 ### Method 2: Using the bot.sh script
@@ -57,7 +65,15 @@ The Freee-Bot Login is a script that automates the process of logging attendance
 
 ```
 
-4. Make sure to open the Terminal and have the appropriate permissions.
+5.	Create an .env file in the root directory and add your password:
+
+```
+PASSWORD=yourpassword
+```
+
+OR if you prefer not to store your password in an .env file, you will be prompted to enter it manually in the terminal during runtime.
+
+6. Make sure to open the Terminal and have the appropriate permissions.
 
 If necessary, you can grant execution permission by running the following command:
 
