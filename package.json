@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "chromedriver": "^130.0.2",
+    "chromedriver": "^141.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.21.2",
     "pkg": "^5.8.0",
