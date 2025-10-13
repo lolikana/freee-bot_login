@@ -32,7 +32,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/chromedriver": "^81.0.1",
+    "@types/chromedriver": "^81.0.5",
     "@types/prompt": "^1.1.4",
     "@types/selenium-webdriver": "^4.1.28"
   }
