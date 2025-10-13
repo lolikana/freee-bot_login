@@ -33,7 +33,7 @@
   "description": "",
   "devDependencies": {
     "@types/chromedriver": "^81.0.1",
-    "@types/prompt": "^1.1.4",
+    "@types/prompt": "^1.1.9",
     "@types/selenium-webdriver": "^4.1.28"
   }
 }
